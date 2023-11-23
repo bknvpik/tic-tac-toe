@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Square from "./components/Square";
+import { calculateWinner } from "./helpers/helpers";
 import "./styles.css";
 
 export default function Board() {
@@ -12,6 +13,8 @@ export default function Board() {
   };
 
   function handleClick(i) {
+    if (squares[i] || calculateWinner(squares)) return;
+
     const nextSquares = squares.slice();
 
     xIsNext ? (nextSquares[i] = players.x) : (nextSquares[i] = players.o);
@@ -20,8 +23,16 @@ export default function Board() {
     setXIsNext(!xIsNext);
   }
 
+  const winner = calculateWinner(squares);
+  let status;
+
+  winner
+    ? (status = `Winner: ${winner}`)
+    : (status = `Next Player: ${xIsNext ? players.x : players.o}`);
+
   return (
     <>
+      <h4>{status}</h4>
       <div className='board-row'>
         <Square
           value={squares[0]}
