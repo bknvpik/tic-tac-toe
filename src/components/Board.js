@@ -1,8 +1,7 @@
-import { useState } from "react";
 import Square from "./Square";
 import { calculateWinner } from "../helpers/helpers";
 
-export default function Board({ xIsNext, squares, onPlay }) {
+export default function Board({ xIsNext, squares, onPlay, move }) {
   const players = {
     x: "X",
     o: "O",
@@ -18,12 +17,16 @@ export default function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }
 
-  const winner = calculateWinner(squares);
+  const winner = calculateWinner(squares, move);
   let status;
 
-  winner
-    ? (status = `Winner: ${winner}`)
-    : (status = `Next Player: ${xIsNext ? players.x : players.o}`);
+  if (winner) {
+    status = `Winner: ${winner?.player}`;
+  } else if (winner === undefined) {
+    status = `Draw`;
+  } else {
+    status = `Next Player: ${xIsNext ? players.x : players.o}`;
+  }
 
   const board = Array(3)
     .fill(null)
@@ -38,8 +41,10 @@ export default function Board({ xIsNext, squares, onPlay }) {
             .map((_, col) => {
               return (
                 <Square
+                  key={row * 3 + col}
                   value={squares[row * 3 + col]}
                   onSquareClick={() => handleClick(row * 3 + col)}
+                  winner={winner && winner.rows?.includes(row * 3 + col)}
                 />
               );
             })}

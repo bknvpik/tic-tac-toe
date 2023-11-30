@@ -18,7 +18,7 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
-  const moves = history.map((squares, move) => {
+  const moves = history.map((_, move) => {
     let description;
 
     if (move > 0) {
@@ -47,6 +47,7 @@ export default function Game() {
           xIsNext={xIsNext}
           squares={currentSquares}
           onPlay={handlePlay}
+          move={currentMove}
         />
       </div>
       <div className='game-info'>
