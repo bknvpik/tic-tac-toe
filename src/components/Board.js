@@ -22,10 +22,10 @@ export default function Board({ xIsNext, squares, onPlay, move }) {
 
   if (winner) {
     status = `Winner: ${winner?.player}`;
-  } else if (winner === undefined) {
-    status = `Draw`;
-  } else {
+  } else if (winner === null) {
     status = `Next Player: ${xIsNext ? players.x : players.o}`;
+  } else {
+    status = `Draw`;
   }
 
   const board = Array(3)

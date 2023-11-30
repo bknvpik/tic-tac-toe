@@ -15,9 +15,9 @@ export function calculateWinner(squares, move) {
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return { player: squares[a], rows: [a, b, c] };
     }
-
-    if (move === squares.length) return undefined;
   }
+
+  if (move === 9) return undefined;
 
   return null;
 }
