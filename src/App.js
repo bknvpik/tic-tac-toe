@@ -50,7 +50,7 @@ export default function Game() {
           move={currentMove}
         />
       </div>
-      <div className='game-info'>
+      <div className='game-info panel'>
         <ol>{moves}</ol>
       </div>
     </div>
