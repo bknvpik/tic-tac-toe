@@ -1,3 +1,8 @@
+export const players = {
+  x: "X",
+  o: "O",
+};
+
 export function calculateWinner(squares, move) {
   const lines = [
     [0, 1, 2],

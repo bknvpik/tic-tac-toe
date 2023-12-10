@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Board from "./components/Board";
 import "./styles.css";
+import { calculateWinner } from "./helpers/helpers";
+import Status from "./components/Status";
 
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -40,14 +42,23 @@ export default function Game() {
       </li>
     );
   });
+
+  const winner = calculateWinner(currentSquares, currentMove);
+
   return (
     <div className='game'>
-      <div className='game-board'>
+      <div className='game-board panel'>
         <Board
           xIsNext={xIsNext}
           squares={currentSquares}
           onPlay={handlePlay}
-          move={currentMove}
+          winner={winner}
+        />
+      </div>
+      <div className='game-status panel'>
+        <Status
+          xIsNext={xIsNext}
+          winner={winner}
         />
       </div>
       <div className='game-info panel'>

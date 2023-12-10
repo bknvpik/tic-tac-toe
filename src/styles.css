@@ -28,16 +28,26 @@ ul {
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
+  all: unset;
+  width: 6rem;
+  height: 6rem;
+
+  border: 3px solid var(--accent-blue);
+  box-sizing: border-box;
+
   font-size: 24px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
   padding: 0;
+  margin: 0;
   text-align: center;
-  width: 34px;
+}
+
+.no-border {
+  border: none;
+}
+
+.full-border {
+  border: 3px solid var(--accent-blue);
 }
 
 .status {
@@ -62,6 +72,18 @@ ul {
       var(--darker-navy) 100%
     ),
     var(--darker-navy);
+}
+.game-board {
+  grid-area: top-mid / l-mid / bot-mid / r-mid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}
+.game-status {
+  grid-area: top-mid / r-mid / mid / r-margin;
+  background-color: pink;
 }
 
 .game-info {

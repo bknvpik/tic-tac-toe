@@ -1,12 +1,7 @@
 import Square from "./Square";
-import { calculateWinner } from "../helpers/helpers";
+import { calculateWinner, players } from "../helpers/helpers";
 
-export default function Board({ xIsNext, squares, onPlay, move }) {
-  const players = {
-    x: "X",
-    o: "O",
-  };
-
+export default function Board({ xIsNext, squares, onPlay, winner }) {
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) return;
 
@@ -15,17 +10,6 @@ export default function Board({ xIsNext, squares, onPlay, move }) {
     xIsNext ? (nextSquares[i] = players.x) : (nextSquares[i] = players.o);
 
     onPlay(nextSquares);
-  }
-
-  const winner = calculateWinner(squares, move);
-  let status;
-
-  if (winner) {
-    status = `Winner: ${winner?.player}`;
-  } else if (winner === null) {
-    status = `Next Player: ${xIsNext ? players.x : players.o}`;
-  } else {
-    status = `Draw`;
   }
 
   const board = Array(3)
@@ -52,10 +36,5 @@ export default function Board({ xIsNext, squares, onPlay, move }) {
       );
     });
 
-  return (
-    <>
-      <h4>{status}</h4>
-      {board}
-    </>
-  );
+  return <>{board}</>;
 }
