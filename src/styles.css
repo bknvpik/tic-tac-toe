@@ -81,9 +81,26 @@ ul {
   justify-content: center;
   background-color: green;
 }
-.game-status {
+.game-total {
+  grid-area: bot-mid / l-mid / foot / r-mid;
+  background-color: aqua;
+}
+
+.game-bar {
   grid-area: top-mid / r-mid / mid / r-margin;
+  display: flex;
+
   background-color: pink;
+}
+
+.game-status {
+  flex: 1;
+  background-color: blue;
+}
+
+.game-reset {
+  flex: 1;
+  background-color: yellow;
 }
 
 .game-info {

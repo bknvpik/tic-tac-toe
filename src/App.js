@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Board from "./components/Board";
 import "./styles.css";
-import { calculateWinner } from "./helpers/helpers";
+import { calculateWinner, players } from "./helpers/helpers";
 import Status from "./components/Status";
+import Reset from "./components/Reset";
+import Total from "./components/Total";
 
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
+  const [total, setTotal] = useState({ x: 0, o: 0 });
+  const [winner, setWinner] = useState(null);
+  useEffect(() => {
+    setWinner(calculateWinner(currentSquares, currentMove));
+  }, [currentMove]);
 
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -43,8 +50,6 @@ export default function Game() {
     );
   });
 
-  const winner = calculateWinner(currentSquares, currentMove);
-
   return (
     <div className='game'>
       <div className='game-board panel'>
@@ -55,10 +60,19 @@ export default function Game() {
           winner={winner}
         />
       </div>
-      <div className='game-status panel'>
+      <Total
+        winner={winner}
+        total={total}
+        setTotal={setTotal}
+      />
+      <div className='game-bar panel'>
         <Status
           xIsNext={xIsNext}
           winner={winner}
+        />
+        <Reset
+          setHistory={setHistory}
+          setCurrentMove={setCurrentMove}
         />
       </div>
       <div className='game-info panel'>

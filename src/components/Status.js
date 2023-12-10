@@ -10,5 +10,9 @@ export default function Status({ xIsNext, winner }) {
   } else {
     status = `Draw`;
   }
-  return <h4>{status}</h4>;
+  return (
+    <div className='game-status panel'>
+      <h4>{status}</h4>
+    </div>
+  );
 }
