@@ -73,6 +73,7 @@ export default function Game() {
         <Reset
           setHistory={setHistory}
           setCurrentMove={setCurrentMove}
+          setTotal={setTotal}
         />
       </div>
       <div className='game-info panel'>
