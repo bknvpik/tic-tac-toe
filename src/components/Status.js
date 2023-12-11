@@ -1,18 +1,24 @@
 import { players } from "../helpers/helpers";
 
 export default function Status({ xIsNext, winner }) {
-  let status;
+  let status, player;
 
   if (winner) {
-    status = `Winner: ${winner?.player}`;
+    status = "Winner";
+    player = winner?.player;
   } else if (winner === null) {
-    status = `Next Player: ${xIsNext ? players.x : players.o}`;
+    status = "Next";
+    player = xIsNext ? players.x : players.o;
   } else {
-    status = `Draw`;
+    status = "Winner";
+    player = "Draw";
   }
   return (
     <div className='game-status panel'>
-      <h4>{status}</h4>
+      <p>{status}</p>
+      <h1 className={`${player === players.x ? "player-x" : "player-o"}`}>
+        {player}
+      </h1>
     </div>
   );
 }

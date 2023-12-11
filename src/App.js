@@ -65,7 +65,7 @@ export default function Game() {
         total={total}
         setTotal={setTotal}
       />
-      <div className='game-bar panel'>
+      <div className='game-bar'>
         <Status
           xIsNext={xIsNext}
           winner={winner}
