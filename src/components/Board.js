@@ -12,29 +12,18 @@ export default function Board({ xIsNext, squares, onPlay, winner }) {
     onPlay(nextSquares);
   }
 
-  const board = Array(3)
+  const board = Array(9)
     .fill(null)
-    .map((_, row) => {
+    .map((_, i) => {
       return (
-        <div
-          key={row}
-          className='board-row'
-        >
-          {Array(3)
-            .fill(null)
-            .map((_, col) => {
-              return (
-                <Square
-                  key={row * 3 + col}
-                  value={squares[row * 3 + col]}
-                  onSquareClick={() => handleClick(row * 3 + col)}
-                  winner={winner && winner.rows?.includes(row * 3 + col)}
-                />
-              );
-            })}
-        </div>
+        <Square
+          key={i}
+          value={squares[i]}
+          onSquareClick={() => handleClick(i)}
+          winner={winner && winner.rows?.includes(i)}
+          cssClass={`border-${i}`}
+        />
       );
     });
-
-  return <>{board}</>;
+  return <div className='game-board-container'>{board}</div>;
 }
