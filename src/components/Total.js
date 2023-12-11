@@ -8,6 +8,11 @@ export default function Total({ winner, total, setTotal }) {
       nextTotal.x = nextTotal.x + 1;
       setTotal(nextTotal);
     }
+    if (winner?.player === players.o) {
+      const nextTotal = JSON.parse(JSON.stringify(total));
+      nextTotal.o = nextTotal.o + 1;
+      setTotal(nextTotal);
+    }
   }, [winner]);
 
   return (
