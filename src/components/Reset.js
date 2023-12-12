@@ -12,13 +12,13 @@ export default function Reset({ setHistory, setCurrentMove, setTotal }) {
   return (
     <div className='game-reset panel'>
       <button
-        className='action-button'
+        className='action-button button-light'
         onClick={resetBoard}
       >
         Reset Board
       </button>
       <button
-        className='action-button'
+        className='action-button button-dark'
         onClick={resetAll}
       >
         Reset All

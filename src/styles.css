@@ -124,7 +124,22 @@ ul {
 
 .game-reset {
   flex: 1;
-  background-color: yellow;
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(4, 102, 200, 0.4);
+}
+
+.action-button {
+  all: unset;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: var(--shadow-default);
+  color: var(--darker-navy);
+  font-size: 1.2rem;
 }
 
 .game-info {
@@ -167,4 +182,22 @@ ul {
 
 .player-x {
   color: var(--accent-red);
+}
+
+.button-light {
+  background-color: rgba(242, 145, 0, 0.8);
+  border: 3px solid var(--accent-orange);
+}
+
+.button-light:hover {
+  background-color: var(--accent-orange);
+}
+
+.button-dark {
+  background-color: rgba(255, 105, 7, 0.8);
+  border: 3px solid var(--accent-red);
+}
+
+.button-dark:hover {
+  background-color: #ff6907;
 }
