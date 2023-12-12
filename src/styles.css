@@ -1,90 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;500;600;700&display=swap");
+
+:root {
+  --darker-navy: #001233;
+  --dark-navy: #001845;
+  --medium-navy: #002855;
+  --light-navy: #023e7d;
+  --accent-blue: #0463c2;
+  --accent-red: #fc4e28;
+  --accent-orange: #f18f01;
+  --accent-green: #99c24d;
+  --shadow-default: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
+}
+
 * {
+  font-family: "Sen", sans-serif;
   box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
-  margin: 20px;
+  margin: 0;
   padding: 0;
+  height: 100vh;
 }
 
-h1 {
-  margin-top: 0;
-  font-size: 22px;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 20px;
-}
-
-h3 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-h4 {
-  margin-top: 0;
-  font-size: 16px;
-}
-
-h5 {
-  margin-top: 0;
-  font-size: 14px;
-}
-
-h6 {
-  margin-top: 0;
-  font-size: 12px;
-}
-
-code {
-  font-size: 1.2em;
+#root {
+  height: 100%;
 }
 
 ul {
   padding-inline-start: 20px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-  margin: 20px;
-  padding: 0;
-}
-
 .square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
+  all: unset;
+  flex: 1 1 30%;
+
+  box-sizing: border-box;
+  aspect-ratio: 1/1;
+  font-size: 3rem;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
   padding: 0;
+  margin: 0;
   text-align: center;
-  width: 34px;
 }
 
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
+.no-border {
+  border: none;
+}
+
+.full-border {
+  border: 3px solid var(--accent-blue);
 }
 
 .status {
-  margin-bottom: 10px;
 }
+
 .game {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: [l-margin] 20% [l-mid] 30% [r-mid] 30% [r-margin] 20%;
+  grid-template-rows: [head] 15% [top-mid] 1fr [mid] 1fr [bot-mid] 1fr [foot] 15%;
+  gap: 1rem;
+  place-items: stretch;
+
+  background: radial-gradient(
+      50% 50% at 50% 50%,
+      var(--light-navy) 0%,
+      rgba(0, 40, 85, 0.6) 65%,
+      rgba(0, 33, 78, 0.3) 80%,
+      var(--darker-navy) 100%
+    ),
+    var(--darker-navy);
+}
+.game-board {
+  grid-area: top-mid / l-mid / bot-mid / r-mid;
+  padding: 2rem;
+
+  background: rgba(4, 102, 200, 0.4);
+}
+
+.game-board-container {
+  max-height: 100%;
+  aspect-ratio: 1/1;
+
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.game-total {
+  grid-area: bot-mid / l-mid / foot / r-mid;
+  display: flex;
+  background: rgba(2, 62, 125, 0.4);
+  color: white;
+  padding: 1rem;
+}
+
+.game-total > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-bar {
+  grid-area: top-mid / r-mid / mid / r-margin;
+  display: flex;
+  gap: 1rem;
+}
+
+.game-status {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 1rem;
+}
+
+.game-status > p {
+  justify-self: flex-start;
+}
+
+h1 {
+  font-size: 4rem;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.game-reset {
+  flex: 1;
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(4, 102, 200, 0.4);
+}
+
+.action-button {
+  all: unset;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: var(--shadow-default);
+  color: var(--darker-navy);
+  font-size: 1.2rem;
 }
 
 .game-info {
-  margin-left: 20px;
+  grid-area: mid / r-mid / foot / r-margin;
+  background-color: red;
+}
+
+.panel {
+  border-radius: 15px;
+  box-shadow: var(--shadow-default);
+}
+
+.border-1 {
+  border: 3px solid var(--accent-blue);
+  border-top: 0;
+  transform: translateY(3px);
+}
+
+.border-3 {
+  border: 3px solid var(--accent-blue);
+  border-left: 0;
+  transform: translateX(3px);
+}
+
+.border-5 {
+  border: 3px solid var(--accent-blue);
+  border-right: 0;
+  transform: translateX(-3px);
+}
+
+.border-7 {
+  border: 3px solid var(--accent-blue);
+  border-bottom: 0;
+  transform: translateY(-3px);
+}
+
+.player-o {
+  color: var(--accent-green);
+}
+
+.player-x {
+  color: var(--accent-red);
+}
+
+.button-light {
+  background-color: rgba(242, 145, 0, 0.8);
+  border: 3px solid var(--accent-orange);
+}
+
+.button-light:hover {
+  background-color: var(--accent-orange);
+}
+
+.button-dark {
+  background-color: rgba(255, 105, 7, 0.8);
+  border: 3px solid var(--accent-red);
+}
+
+.button-dark:hover {
+  background-color: #ff6907;
 }
