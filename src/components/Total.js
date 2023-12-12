@@ -17,9 +17,18 @@ export default function Total({ winner, total, setTotal }) {
 
   return (
     <div className='game-total panel'>
-      {total.x}
-      vs
-      {total.o}
+      <div>
+        <h1 className='player-x'>X</h1>
+        <h3>{total.x}</h3>
+      </div>
+      <div>
+        <p>Total</p>
+        <h3>vs</h3>
+      </div>
+      <div>
+        <h1 className='player-o'>O</h1>
+        <h3> {total.o}</h3>
+      </div>
     </div>
   );
 }
