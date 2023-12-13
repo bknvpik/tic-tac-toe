@@ -5,6 +5,7 @@ import { calculateWinner, players } from "./helpers/helpers";
 import Status from "./components/Status";
 import Reset from "./components/Reset";
 import Total from "./components/Total";
+import History from "./components/History";
 
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -22,33 +23,6 @@ export default function Game() {
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
   }
-
-  function jumpTo(nextMove) {
-    setCurrentMove(nextMove);
-  }
-
-  const moves = history.map((_, move) => {
-    let description;
-
-    if (move > 0) {
-      description =
-        move === currentMove
-          ? `You are at move #${move}`
-          : `Go to move #${move}`;
-    } else {
-      description = `Go to start`;
-    }
-
-    return (
-      <li key={move}>
-        {move === currentMove && move > 0 ? (
-          <span>{description}</span>
-        ) : (
-          <button onClick={() => jumpTo(move)}>{description}</button>
-        )}
-      </li>
-    );
-  });
 
   return (
     <div className='game'>
@@ -76,9 +50,11 @@ export default function Game() {
           setTotal={setTotal}
         />
       </div>
-      <div className='game-info panel'>
-        <ol>{moves}</ol>
-      </div>
+      <History
+        history={history}
+        currentMove={currentMove}
+        setCurrentMove={setCurrentMove}
+      />
     </div>
   );
 }

@@ -22,12 +22,12 @@ export default function Total({ winner, total, setTotal }) {
         <h3>{total.x}</h3>
       </div>
       <div>
-        <p>Total</p>
         <h3>vs</h3>
+        <p>Total</p>
       </div>
       <div>
         <h1 className='player-o'>O</h1>
-        <h3> {total.o}</h3>
+        <h3>{total.o}</h3>
       </div>
     </div>
   );
