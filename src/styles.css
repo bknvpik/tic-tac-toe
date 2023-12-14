@@ -269,3 +269,53 @@ img {
 .magnifier {
   align-self: stretch;
 }
+
+header {
+  display: flex;
+  grid-area: head / l-mid / top-mid / r-mid;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.logo {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo,
+header span {
+  letter-spacing: 4px;
+}
+
+.logo span:first-child {
+  opacity: 0;
+}
+
+.a {
+  animation-name: logo;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+.logo-split {
+  display: flex;
+  height: 19px;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+@keyframes logo {
+  0% {
+    order: -1;
+    opacity: 0;
+  }
+  50% {
+    order: 2;
+    opacity: 1;
+  }
+  100% {
+    order: -1;
+    opacity: 0;
+  }
+}

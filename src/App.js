@@ -26,6 +26,23 @@ export default function Game() {
 
   return (
     <div className='game'>
+      <header>
+        <div className='logo-split'>
+          <div className='logo'>
+            <span>T</span>
+            <span>T</span>
+          </div>
+          <div className='logo logo-switch'>
+            <span className='a'>I</span>
+            <span className='b'>A</span>
+          </div>
+          <div className='logo'>
+            <span>C</span>
+            <span>C</span>
+          </div>
+        </div>
+        <div className='logo'>TOE</div>
+      </header>
       <div className='game-board panel'>
         <Board
           xIsNext={xIsNext}

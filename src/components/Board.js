@@ -16,13 +16,15 @@ export default function Board({ xIsNext, squares, onPlay, winner }) {
     .fill(null)
     .map((_, i) => {
       return (
-        <Square
-          key={i}
-          value={squares[i]}
-          onSquareClick={() => handleClick(i)}
-          winner={winner && winner.rows?.includes(i)}
-          cssClass={`border-${i}`}
-        />
+        <>
+          <Square
+            key={i}
+            value={squares[i]}
+            onSquareClick={() => handleClick(i)}
+            winner={winner && winner.rows?.includes(i)}
+            cssClass={`border-${i}`}
+          />
+        </>
       );
     });
   return <div className='game-board-container'>{board}</div>;
